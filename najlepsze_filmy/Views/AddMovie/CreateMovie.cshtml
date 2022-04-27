@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Dodaj film";
+}
+
+@model Movie
+
+<section>
+    <div class="p-5 mt-5 bg-light border border-1">
+        <form method="post">
+            <div class="text-center border-bottom">
+                <h1>Dodaj film</h1>
+            </div>
+
+            <div class="mt-3">
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Director"></label>
+                    <input asp-for="Director" class="form-control">
+                    <span asp-validation-for="Director" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RelaseDate"></label>
+                    <input asp-for="RelaseDate" class="form-control" />
+                    <span asp-validation-for="RelaseDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Opinion"></label>
+                    <textarea asp-for="Opinion" class="form-control" rows="3" placeholder="Maksymalnie 400 znaków" style="resize: none;"></textarea>
+                    <span asp-validation-for="Opinion" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Video"></label>
+                    <input asp-for="Video" class="form-control">
+                    <span asp-validation-for="Video" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="GenreId"></label>
+                    <select class="form-control" asp-for="GenreId" asp-items="ViewBag.GenreId">
+                        <option>Wybierz kategorię</option>
+                    </select>
+                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="submit" class="btn btn-dark btn-size btn-font">Dodaj</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary btn-font ms-1">Wróć do strony głównej</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

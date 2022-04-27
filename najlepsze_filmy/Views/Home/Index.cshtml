@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Strona główna";
+}
+
+@model ICollection<Movie>
+
+<section>
+    <header class="mt-5 border border-1">
+        <div class="text-center text-dark bg-light p-5 opacity-element">
+            <h1>Baza najlepszych filmów według użytkowników.</h1>
+            <p class="mt-4 p-sm fs-5">Dodaj swoją ulubioną adaptację, dzieląc się z nią ze wszystkimi!</p>
+            <a class="btn btn-dark mt-5" style="width: 150px;" asp-controller="AddMovie" asp-action="CreateMovie">Dodaj film</a>
+        </div>
+    </header>
+
+    @if (Model.Count() == 0)
+    {
+        <div class="bg-light border border-1 mt-5 p-5 d-flex justify-content-center">
+            <h1>Do bazy nie dodano jeszcze żadnych filmów!</h1>
+        </div>
+    }
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-4 g-4 mt-5">
+        @foreach (var element in Model)
+        {
+            <div class="col">
+                <a class="text-decoration-none text-dark" asp-controller="Home" asp-action="Details" asp-route-id="@element.Id">
+                    <div class="card p-3 bg-light h-100 a-hover">
+                        <img class="card-img-top img-sm img-md" src="@element.Photo" alt="Zdjęcie filmu" height="360">
+                        <div class="card-body text-center d-flex align-items-center justify-content-center">
+                            <h5 class="card-title">@element.Title</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-light"><span class="fw-bold">Reżyseria:</span> <p>@element.Director</p></li>
+                            <li class="list-group-item bg-light"><span class="fw-bold">Rok produkcji:</span> <p>@element.RelaseDate</p></li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</section>
